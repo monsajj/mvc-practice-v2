@@ -28,7 +28,7 @@ class Product extends Model
     /**
      * @var
      */
-    private $category_id;
+    private $categoryid;
 
     /**
      * @var
@@ -58,12 +58,12 @@ class Product extends Model
     /**
      * @var
      */
-    private $is_new;
+    private $isnew;
 
     /**
      * @var
      */
-    private $is_recommended;
+    private $isrecommended;
 
     /**
      * @var
@@ -103,19 +103,19 @@ class Product extends Model
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getCategoryId()
+    public function getCategoryId():int
     {
-        return $this->category_id;
+        return $this->categoryid;
     }
 
     /**
-     * @param mixed $category_id
+     * @param mixed $categoryid
      */
-    public function setCategoryId($category_id): void
+    public function setCategoryId($categoryid): void
     {
-        $this->category_id = $category_id;
+        $this->categoryid = $categoryid;
     }
 
     /**
@@ -203,15 +203,15 @@ class Product extends Model
      */
     public function getisNew()
     {
-        return $this->is_new;
+        return $this->isnew;
     }
 
     /**
-     * @param mixed $is_new
+     * @param mixed $isnew
      */
-    public function setIsNew($is_new): void
+    public function setIsNew($isnew): void
     {
-        $this->is_new = $is_new;
+        $this->isnew = $isnew;
     }
 
     /**
@@ -219,15 +219,15 @@ class Product extends Model
      */
     public function getisRecommended()
     {
-        return $this->is_recommended;
+        return $this->isrecommended;
     }
 
     /**
-     * @param mixed $is_recommended
+     * @param mixed $isrecommended
      */
-    public function setIsRecommended($is_recommended): void
+    public function setIsRecommended($isrecommended): void
     {
-        $this->is_recommended = $is_recommended;
+        $this->isrecommended = $isrecommended;
     }
 
     /**
@@ -255,14 +255,14 @@ class Product extends Model
             'id' => $this->getId(),
             'name' => $this->getName(),
             'status' => $this->getStatus(),
-            'category_id' => $this->getCategoryId(),
+            'categoryid' => $this->getCategoryId(),
             'brand' => $this->getBrand(),
             'code' => $this->getCode(),
             'price' => $this->getPrice(),
             'availability' => $this->getAvailability(),
             'description' => $this->getDescription(),
-            'is_new' => $this->getisNew(),
-            'is_recommended' => $this->getisRecommended(),
+            'isnew' => $this->getisNew(),
+            'isrecommended' => $this->getisRecommended(),
         ];
     }
 }

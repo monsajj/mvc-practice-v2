@@ -79,7 +79,26 @@ $routes = [
      *                                          PRODUCT SECTION
      *------------------------------------------------------------------------------------------------------------------
      */
-
+    [
+        'route' => 'admin/products',
+        'params' => ['controller' => 'Product', 'action' => 'index', 'namespace' => 'Admin']
+    ],
+    [
+        'route' => 'admin/products/create',
+        'params' => ['controller' => 'Product', 'action' => 'create', 'namespace' => 'Admin']
+    ],
+    [
+        'route' => 'admin/products/store',
+        'params' => ['controller' => 'Product', 'action' => 'store', 'namespace' => 'Admin']
+    ],
+    [
+        'route' => 'admin/products/delete/{id:\d+}',
+        'params' => ['controller' => 'Product', 'action' => 'delete', 'namespace' => 'Admin']
+    ],
+    [
+        'route' => 'admin/products/update/{id:\d+}',
+        'params' => ['controller' => 'Product', 'action' => 'update', 'namespace' => 'Admin']
+    ],
     /*__________________________________________________________________________________________________________________
      *
      *                                          ORDER SECTION
