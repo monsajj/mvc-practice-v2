@@ -201,7 +201,7 @@ class Product extends Model
     /**
      * @return mixed
      */
-    public function getisNew()
+    public function getIsNew()
     {
         return $this->isnew;
     }
@@ -261,7 +261,7 @@ class Product extends Model
             'price' => $this->getPrice(),
             'availability' => $this->getAvailability(),
             'description' => $this->getDescription(),
-            'isnew' => $this->getisNew(),
+            'isnew' => $this->getIsNew(),
             'isrecommended' => $this->getisRecommended(),
         ];
     }
