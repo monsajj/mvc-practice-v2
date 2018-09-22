@@ -9,6 +9,10 @@ namespace Core;
  */
 abstract class Controller
 {
+    /**
+     * @var array
+     */
+    static protected $own_session = [];
 
     /**
      * @var Request
