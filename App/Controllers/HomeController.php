@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\Product\Category;
 use App\Models\Product\Product;
 use \Core\Request;
@@ -43,36 +44,12 @@ class HomeController extends \Core\Controller
      */
     public function indexAction()
     {
-        //$session = Session::getInstance();
-        var_dump(parent::$own_session);
         $products = $this->product->findBy(['status' => 1]);
 
         View::renderTemplate('home/index.html', ['products' => $products]);
     }
 
-    public function addToCartAction($id)
-    {
-        $session = parent::$own_session;
-        //$session = Session::getInstance();
-        //$product = $session->getParam($id);
-        //$product = $_SESSION[$id];
-        if (isset($session[$id]))
-        {
-            echo "null\n";
-            $session[$id] = $session + 1;
-                //$session->setParam($id, 1);
-        } else
-            {
-                echo "not null\n";
-                $session[$id] = 1;
-                //$session->setParam($id, $product + 1);
-            }
 
-        parent::$own_session = $session;
-        var_dump($id, $session);
-        die();
-        return $this->redirect('/');
-    }
 
     public function categoriesAction()
     {

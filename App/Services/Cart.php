@@ -8,11 +8,21 @@
 
 namespace App\Services;
 
-
 use Core\Model;
 
+/**
+ * Class Cart
+ * @package App\Models
+ */
 class Cart extends Model
 {
+
+    protected $table = 'cart';
+
+    /**
+    * @var
+    */
+    private $id;
 
     /**
      * @var
@@ -27,13 +37,29 @@ class Cart extends Model
     /**
      * @return mixed
      */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getProductId()
     {
         return $this->productid;
     }
 
     /**
-     * @param mixed $id
+     * @param mixed $productid
      */
     public function setProductId($productid): void
     {
@@ -49,7 +75,7 @@ class Cart extends Model
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $amount
      */
     public function setAmount($amount): void
     {
@@ -57,11 +83,29 @@ class Cart extends Model
     }
 
     /**
-     * @return mixed
+     * @param mixed
+     * @return int
+     */
+    public function checkExist($id):int
+    {
+        $cart = $this->getAll();
+        foreach ($cart as $item){
+            if ($id == $item->getProductId()){
+                return $item->getId();
+            }
+        }
+
+        return 0;
+    }
+
+
+    /**
+     * @return array|mixed
      */
     protected function toArray()
     {
         return [
+            'id' => $this->getId(),
             'productid' => $this->getProductId(),
             'amount' => $this->getAmount(),
         ];
