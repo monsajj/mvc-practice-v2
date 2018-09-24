@@ -15,10 +15,6 @@ $routes = [
         'route' => '',
         'params' => ['controller' => 'Home', 'action' => 'index']
     ],
-    [
-        'route' => 'product/{id:\d+}/add',
-        'params' => ['controller' => 'Cart', 'action' => 'addToCart']
-    ],
    /*__________________________________________________________________________________________________________________
     *
     *                                          CATEGORIES SECTION
@@ -37,10 +33,6 @@ $routes = [
      *                                          PRODUCT SECTION
      *------------------------------------------------------------------------------------------------------------------
      */
-    [
-        'route' => 'cart/delete/{id:\d+}',
-        'params' => ['controller' => 'Cart', 'action' => 'delete']
-    ],
     /*__________________________________________________________________________________________________________________
      *
      *                                          ORDER SECTION
@@ -50,7 +42,14 @@ $routes = [
         'route' => 'cart',
         'params' => ['controller' => 'Cart', 'action' => 'index']
     ],
-
+    [
+        'route' => 'product/{id:\d+}/add',
+        'params' => ['controller' => 'Cart', 'action' => 'addToCart']
+    ],
+    [
+        'route' => 'cart/delete/{id:\d+}',
+        'params' => ['controller' => 'Cart', 'action' => 'delete']
+    ],
     /*__________________________________________________________________________________________________________________
      |
      |                                      ADMIN SECTION

@@ -77,16 +77,7 @@ class CartController extends \Core\Controller
     public function addToCart($productId)
     {
 
-        $idInCart = $this->cart->checkExist($productId);
-        if($idInCart){
-            $product = $this->cart->findById($idInCart);
-            $amount = $product->getAmount();
-            $data = ['id' => $idInCart, 'productid' => $productId, 'amount' => $amount + 1];
-        } else {
-
-            $data = ['productid' => $productId, 'amount' => 1];
-        }
-
+        $data = $this->cartStore->getDataToAdd($productId);
         if ($this->cartValidator->validate($data)) {
             $this->cartStore->store($data);
         }
@@ -100,15 +91,12 @@ class CartController extends \Core\Controller
     public function delete($id)
     {
 
-        $product = $this->cart->findById($id);
-        $productId = $product->getProductId();
-        $amount = $product->getAmount();
-        if ($amount == 1)
+        $data = $this->cartStore->getDataToDelete($id);
+        if ($data['amount'] == 0)
         {
             $this->cart->delete($id);
         } else
             {
-                $data = ['id' => $id, 'productid' => $productId, 'amount' => $amount - 1];
                 $this->cartStore->store($data);
             }
 

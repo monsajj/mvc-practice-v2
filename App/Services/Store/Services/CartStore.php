@@ -19,8 +19,14 @@ use Core\Model;
 final class CartStore extends StoreService
 {
 
+    /**
+     * @var Cart
+     */
+    private $cart;
+
     public function __construct(Cart $cart)
     {
+        $this->cart = $cart;
         parent::__construct($cart);
     }
 
@@ -39,5 +45,30 @@ final class CartStore extends StoreService
         $model->setAmount($data['amount']);
 
         return $model;
+    }
+
+    public function getDataToAdd($productId){
+        $idInCart = $this->cart->getIdByProductId($productId);
+        if($idInCart){
+            $product = $this->cart->findById($idInCart);
+            $amount = $product->getAmount();
+            $data = ['id' => $idInCart, 'productid' => $productId, 'amount' => $amount + 1];
+        } else {
+
+            $data = ['productid' => $productId, 'amount' => 1];
+        }
+
+        return $data;
+    }
+
+    public function getDataToDelete($id)
+    {
+
+        $product = $this->cart->findById($id);
+        $productId = $product->getProductId();
+        $amount = $product->getAmount();
+        $data = ['id' => $id, 'productid' => $productId, 'amount' => $amount - 1];
+
+        return $data;
     }
 }

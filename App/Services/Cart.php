@@ -86,7 +86,7 @@ class Cart extends Model
      * @param mixed
      * @return int
      */
-    public function checkExist($id):int
+    public function getIdByProductId($id):int
     {
         $cart = $this->getAll();
         foreach ($cart as $item){
